@@ -45,7 +45,6 @@ mapkey("y", "Capture with org-capture", function () {
   );
 });
 
-
 mapkey("t", "Open new tab", function () {
   RUNTIME("newTab");
 })
