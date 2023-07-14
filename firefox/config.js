@@ -2,13 +2,9 @@
 
 /* Preferences */
 
-defaultPref("security.external_protocol_requies_permission", false);
 defaultPref("browser.urlbar.decodeURLsOnCopy", true);
-defaultPref("gfx.webrender.all", false);
-defaultPref("xpinstall.signatures.required", false);
-defaultPref("network.IDN.whitelist.local", true);
-defaultPref("places.history.expiration.max_pages", 2147483647);
 defaultPref("browser.urlbar.trimURLs", false);
+defaultPref("places.history.expiration.max_pages", 2147483647);
 defaultPref("apz.gtk.kinetic_scroll.enabled", false);
 
 /* Custom Keybindings */
