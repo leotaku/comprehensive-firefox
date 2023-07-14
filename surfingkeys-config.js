@@ -4,6 +4,52 @@ unmapAllExcept(["j", "k", "gg", "G"]);
 
 Hints.setCharacters("fjdksla");
 
+mapkey("l", "Choose a tab", function () {
+  Front.openOmnibar({ type: "Tabs", extra: {} });
+});
+
+mapkey("f", "Open a link in same tab", function () {
+  Hints.create("", Hints.dispatchMouseClick, { tabbed: false, active: false });
+});
+mapkey("b", "Open a link in non-active new tab", function () {
+  Hints.create("", Hints.dispatchMouseClick, { tabbed: true, active: false });
+});
+mapkey("n", "Mouse over elements.", function () {
+  Hints.create("", Hints.dispatchMouseClick, { mouseEvents: ["mouseover"] });
+});
+
+mapkey("y", "Capture with org-capture", function () {
+  function openUrl(url) {
+    RUNTIME("openLink", {
+      tab: {
+        tabbed: false,
+      },
+      url: url,
+    });
+  }
+
+  Front.showEditor(
+    "",
+    function (body) {
+      openUrl(
+        "org-protocol://capture?" +
+          new URLSearchParams({
+            template: "wc",
+            url: location.href,
+            title: document.title,
+            body: body,
+          })
+      );
+    },
+    "url"
+  );
+});
+
+
+mapkey("t", "Open new tab", function () {
+  RUNTIME("newTab");
+})
+
 mapkey("q", "Select previous tab", function () {
   RUNTIME("previousTab");
 });
@@ -54,22 +100,6 @@ mapkey("m", "mute/unmute current tab", function () {
   RUNTIME("muteTab");
 });
 
-mapkey("l", "Choose a tab", function () {
-  Front.openOmnibar({ type: "Tabs", extra: {} });
-});
-mapkey("t", "Open new tab", function () {
-  RUNTIME("newTab");
-});
-mapkey("f", "Open a link in same tab", function () {
-  Hints.create("", Hints.dispatchMouseClick, { tabbed: false, active: false });
-});
-mapkey("b", "Open a link in non-active new tab", function () {
-  Hints.create("", Hints.dispatchMouseClick, { tabbed: true, active: false });
-});
-mapkey("n", "Mouse over elements.", function () {
-  Hints.create("", Hints.dispatchMouseClick, { mouseEvents: ["mouseover"] });
-});
-
 mapkey(
   "c",
   "Go back in history",
@@ -87,33 +117,6 @@ mapkey(
   },
   { repeatIgnore: true }
 );
-
-mapkey("y", "Capture with org-capture", function () {
-  function openUrl(url) {
-    RUNTIME("openLink", {
-      tab: {
-        tabbed: false,
-      },
-      url: url,
-    });
-  }
-
-  Front.showEditor(
-    "",
-    function (body) {
-      openUrl(
-        "org-protocol://capture?" +
-          new URLSearchParams({
-            template: "wc",
-            url: location.href,
-            title: document.title,
-            body: body,
-          })
-      );
-    },
-    "url"
-  );
-});
 
 mapkey("=", "Reset zoom level", function () {
   RUNTIME("setZoom", {
