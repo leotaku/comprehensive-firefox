@@ -1,4 +1,4 @@
-const { mapkey, unmapAllExcept, Hints, Front, RUNTIME } = api;
+const { map, mapkey, unmapAllExcept, Hints, Front, RUNTIME } = api;
 
 unmapAllExcept(["j", "k", "gg", "G"]);
 
@@ -46,8 +46,13 @@ mapkey("y", "Capture with org-capture", function () {
 });
 
 mapkey("t", "Open new tab", function () {
-  RUNTIME("newTab");
-})
+  RUNTIME("openLink", {
+    tab: {
+      tabbed: true,
+    },
+    url: "about:blank",
+  });
+});
 
 mapkey("q", "Select previous tab", function () {
   RUNTIME("previousTab");
@@ -66,12 +71,8 @@ mapkey("W", "Move current tab to right", function () {
   });
 });
 
-mapkey("a", "Focus first tab", function () {
-  RUNTIME("firstTab");
-});
-mapkey("s", "Focus last tab", function () {
-  RUNTIME("lastTab");
-});
+map("a", ":feedkeys 999E", null, "Focus first tab");
+map("s", ":feedkeys 999R", null, "Focus last tab");
 mapkey("A", "Move current tab to far left", function () {
   RUNTIME("moveTab", {
     step: -500,
