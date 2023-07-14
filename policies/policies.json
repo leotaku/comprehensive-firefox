@@ -1,6 +1,5 @@
 {
   "policies": {
-    "DisableAppUpdate": true,
     "ExtensionSettings": {
       "uBlock0@raymondhill.net": {
         "installation_mode": "normal_installed",
