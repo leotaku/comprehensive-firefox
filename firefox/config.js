@@ -57,6 +57,17 @@ function __changeKeyboardShortcuts(w) {
 
   setKey(w, "C", "", "BrowserBack();");
   setKey(w, "V", "", "BrowserForward();");
+
+  w.ToggleURLBarFocus = function () {
+    let urlbar = w.document.getElementById("urlbar-input");
+    if (urlbar == w.document.activeElement) {
+      urlbar.blur();
+    } else {
+      urlbar.focus();
+    }
+  };
+
+  setKey(w, "O", "alt", "ToggleURLBarFocus();");
 }
 
 try {
