@@ -7,6 +7,11 @@ defaultPref("browser.urlbar.trimURLs", false);
 defaultPref("places.history.expiration.max_pages", 2147483647);
 defaultPref("apz.gtk.kinetic_scroll.enabled", false);
 
+defaultPref("services.sync.engine.addons", false);
+defaultPref("services.sync.engine.bookmarks", false);
+defaultPref("services.sync.engine.history", false);
+defaultPref("services.sync.engine.prefs", false);
+
 /* Custom Keybindings */
 
 function mapKey(window, key, modifiers, command) {
