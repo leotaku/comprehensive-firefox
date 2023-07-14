@@ -1,9 +1,6 @@
-const { iunmap, mapkey, unmapAllExcept, Hints, Front, RUNTIME } = api;
+const { mapkey, unmapAllExcept, Hints, Front, RUNTIME } = api;
 
 unmapAllExcept(["j", "k", "gg", "G"]);
-
-// Disable stuipd Emoji keyboard
-iunmap(":");
 
 Hints.setCharacters("fjdksla");
 
