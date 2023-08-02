@@ -16,6 +16,10 @@
       "{a8332c60-5b6d-41ee-bfc8-e9bb331d34ad}": {
         "installation_mode": "normal_installed",
         "install_url": "https://addons.mozilla.org/firefox/downloads/latest/surfingkeys_ff/latest.xpi"
+      },
+      "foxytab@eros.man": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/foxytab/latest.xpi"
       }
     }
   }
