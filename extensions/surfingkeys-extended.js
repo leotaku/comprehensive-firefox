@@ -71,8 +71,14 @@ mapkey("W", "Move current tab to right", function () {
   });
 });
 
-map("a", ":feedkeys 999E", null, "Focus first tab");
-map("s", ":feedkeys 999R", null, "Focus last tab");
+map("a", "Focus first tab", function () {
+  RUNTIME.repeats = 500;
+  RUNTIME("previousTab");
+});
+map("s", "Focus last tab", function () {
+  RUNTIME.repeats = 500;
+  RUNTIME("nextTab");
+});
 mapkey("A", "Move current tab to far left", function () {
   RUNTIME("moveTab", {
     step: -500,
