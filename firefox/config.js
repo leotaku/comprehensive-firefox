@@ -35,7 +35,7 @@ function setKey(window, key, modifiers, command) {
   mainKeyset.appendChild(mapping);
 }
 
-function __changeKeyboardShortcuts(w) {
+function changeKeyboardShortcuts(w) {
   setKey(w, "W", "", "gBrowser.tabContainer.advanceSelectedTab(1, true);");
   setKey(w, "Q", "", "gBrowser.tabContainer.advanceSelectedTab(-1, true);");
   setKey(w, "S", "", "gBrowser.selectTabAtIndex(-1, event);");
@@ -70,37 +70,32 @@ function __changeKeyboardShortcuts(w) {
   setKey(w, "O", "alt", "ToggleURLBarFocus();");
 }
 
+/* Load code in global browser context */
+
 try {
-  let { classes: Cc, interfaces: Ci, manager: Cm } = Components;
-  const { Services } = Components.utils.import(
-    "resource://gre/modules/Services.jsm"
-  );
-  const { SessionStore } = Components.utils.import(
-    "resource:///modules/sessionstore/SessionStore.jsm"
-  );
-  function ConfigJS() {
-    Services.obs.addObserver(this, "chrome-document-global-created", false);
-  }
-  ConfigJS.prototype = {
-    observe: function (aSubject) {
-      aSubject.addEventListener("DOMContentLoaded", this, { once: true });
-    },
-    handleEvent: function (aEvent) {
-      let document = aEvent.originalTarget;
-      let window = document.defaultView;
-      let location = window.location;
-      if (
-        /^(chrome:(?!\/\/(global\/content\/commonDialog|browser\/content\/webext-panels)\.x?html)|about:(?!blank))/i.test(
-          location.href
-        )
-      ) {
-        if (window._gBrowser) {
-          __changeKeyboardShortcuts(window);
-        }
-      }
-    },
-  };
   if (!Services.appinfo.inSafeMode) {
-    new ConfigJS();
+    Services.obs.addObserver(
+      (subject) => {
+        subject.addEventListener(
+          "DOMContentLoaded",
+          (event) => {
+            let document = event.originalTarget;
+            let window = document.defaultView;
+
+            if (window.location == "chrome://browser/content/browser.xhtml") {
+              window.console.log(
+                "Configuring comprehensive-firefox keyboard shortcuts",
+              );
+              changeKeyboardShortcuts(window);
+            }
+          },
+          { once: true },
+        );
+      },
+      "chrome-document-global-created",
+      false,
+    );
   }
-} catch (ex) {}
+} catch (exception) {
+  Components.utils.reportError(exception);
+}
