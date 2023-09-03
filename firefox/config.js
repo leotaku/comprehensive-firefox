@@ -23,7 +23,7 @@ function mapKey(window, key, modifiers, command) {
 function setKey(window, key, modifiers, command) {
   let mapping = window.document.createElementNS(
     "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul",
-    "key"
+    "key",
   );
   mapping.setAttribute("id", "key_custom_" + key + "_" + modifiers);
   mapping.setAttribute("modifiers", modifiers);
