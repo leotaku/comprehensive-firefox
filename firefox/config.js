@@ -82,7 +82,9 @@ try {
             let document = event.originalTarget;
             let window = document.defaultView;
 
-            if (window.location == "chrome://browser/content/browser.xhtml") {
+            if (
+              window.location.href === "chrome://browser/content/browser.xhtml"
+            ) {
               window.console.log(
                 "Configuring comprehensive-firefox keyboard shortcuts",
               );
