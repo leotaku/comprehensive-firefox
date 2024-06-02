@@ -86,7 +86,7 @@ try {
               window.location.href === "chrome://browser/content/browser.xhtml"
             ) {
               window.console.log(
-                "Configuring comprehensive-firefox keyboard shortcuts",
+                "[comprehensive-firefox]: configuring keyboard shortcuts",
               );
               changeKeyboardShortcuts(window);
             }
