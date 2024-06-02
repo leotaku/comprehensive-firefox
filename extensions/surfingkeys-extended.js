@@ -1,4 +1,4 @@
-const { map, mapkey, unmapAllExcept, Hints, Front, RUNTIME } = api;
+const { mapkey, unmapAllExcept, Hints, Front, RUNTIME } = api;
 
 unmapAllExcept(["j", "k", "gg", "G"]);
 
@@ -71,11 +71,11 @@ mapkey("W", "Move current tab to right", function () {
   });
 });
 
-map("a", "Focus first tab", function () {
+mapkey("a", "Focus first tab", function () {
   RUNTIME.repeats = 500;
   RUNTIME("previousTab");
 });
-map("s", "Focus last tab", function () {
+mapkey("s", "Focus last tab", function () {
   RUNTIME.repeats = 500;
   RUNTIME("nextTab");
 });
