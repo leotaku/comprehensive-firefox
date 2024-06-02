@@ -4,6 +4,12 @@ unmapAllExcept(["j", "k", "gg", "G"]);
 
 Hints.setCharacters("fjdksla");
 
+mapkey("t", "Open a tab from search", function () {
+  Front.openOmnibar({ type: "SearchEngine", extra: "g" });
+});
+mapkey("h", "Open a tab from history", function () {
+  Front.openOmnibar({ type: "History" });
+});
 mapkey("l", "Choose a tab", function () {
   Front.openOmnibar({ type: "Tabs", extra: {} });
 });
@@ -43,15 +49,6 @@ mapkey("y", "Capture with org-capture", function () {
     },
     "url",
   );
-});
-
-mapkey("t", "Open new tab", function () {
-  RUNTIME("openLink", {
-    tab: {
-      tabbed: true,
-    },
-    url: "about:blank",
-  });
 });
 
 mapkey("q", "Select previous tab", function () {
