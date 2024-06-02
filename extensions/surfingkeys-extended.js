@@ -1,4 +1,20 @@
-const { mapkey, unmapAllExcept, Hints, Front, RUNTIME } = api;
+const { addSearchAlias, mapkey, unmapAllExcept, Hints, Front, RUNTIME } = api;
+
+addSearchAlias(
+  "b",
+  "brave",
+  "https://search.brave.com/search?q=",
+  "s",
+  "https://search.brave.com/api/suggest?rich=false&q=",
+  function (response) {
+    return JSON.parse(response.text).at(1);
+  },
+  "o",
+  {
+    skipMaps: true,
+    favicon_url: "https://brave.com/static-assets/images/brave-favicon.png",
+  },
+);
 
 unmapAllExcept(["j", "k", "gg", "G"]);
 
