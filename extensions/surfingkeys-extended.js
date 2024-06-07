@@ -16,8 +16,6 @@ addSearchAlias(
   },
 );
 
-settings.defaultSearchEngine = "b";
-
 unmapAllExcept(["j", "k", "gg", "G"]);
 
 Hints.setCharacters("fjdksla");
