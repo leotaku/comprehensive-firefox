@@ -22,13 +22,10 @@ unmapAllExcept(["j", "k", "gg", "G"]);
 
 Hints.setCharacters("fjdksla");
 
-mapkey("t", "Open a tab from search", function () {
-  Front.openOmnibar({ type: "SearchEngine", extra: "g" });
-});
-mapkey("h", "Open a tab from history", function () {
+mapkey("t", "Open a tab from history or search", function () {
   Front.openOmnibar({ type: "History" });
 });
-mapkey("l", "Choose a tab", function () {
+mapkey("l", "Choose an open tab", function () {
   Front.openOmnibar({ type: "Tabs", extra: {} });
 });
 
