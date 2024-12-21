@@ -38,30 +38,24 @@ mapkey("n", "Mouse over elements.", function () {
 });
 
 mapkey("y", "Capture with org-capture", function () {
-  function openUrl(url) {
-    RUNTIME("openLink", {
-      tab: {
-        tabbed: false,
-      },
-      url: url,
-    });
+  const body = prompt(document.title);
+  if (body === null) {
+    return;
   }
 
-  Front.showEditor(
-    "",
-    function (body) {
-      openUrl(
-        "org-protocol://capture?" +
-          new URLSearchParams({
-            template: "wc",
-            url: location.href,
-            title: document.title,
-            body: body,
-          }),
-      );
+  RUNTIME("openLink", {
+    tab: {
+      tabbed: false,
     },
-    "url",
-  );
+    url:
+      "org-protocol://capture?" +
+      new URLSearchParams({
+        template: "wc",
+        url: location.href,
+        title: document.title,
+        body: body,
+      }),
+  });
 });
 
 mapkey("q", "Select previous tab", function () {
