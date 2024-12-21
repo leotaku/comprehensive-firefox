@@ -4,7 +4,10 @@ unmapAllExcept(["j", "k", "gg", "G"]);
 
 Hints.setCharacters("fjdksla");
 
-mapkey("l", "Choose a tab", function () {
+mapkey("t", "Open a tab from history or search", function () {
+  Front.openOmnibar({ type: "History" });
+});
+mapkey("l", "Choose an open tab", function () {
   Front.openOmnibar({ type: "Tabs", extra: {} });
 });
 
