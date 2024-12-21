@@ -38,10 +38,10 @@ mapkey("y", "Capture with org-capture", function () {
             url: location.href,
             title: document.title,
             body: body,
-          })
+          }),
       );
     },
-    "url"
+    "url",
   );
 });
 
@@ -103,7 +103,7 @@ mapkey(
   function () {
     history.go(-1);
   },
-  { repeatIgnore: true }
+  { repeatIgnore: true },
 );
 
 mapkey(
@@ -112,7 +112,7 @@ mapkey(
   function () {
     history.go(1);
   },
-  { repeatIgnore: true }
+  { repeatIgnore: true },
 );
 
 mapkey("=", "Reset zoom level", function () {
